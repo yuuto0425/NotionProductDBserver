@@ -4,7 +4,8 @@ require('dotenv').config(); // .envファイルから環境変数を読み込む
 const cors = require("cors")
 
 const app = express();
-const port = 3001; // バックエンドサーバーのポート
+const port = process.env.PORT || 3001;
+; // バックエンドサーバーのポート
 
 app.use(express.json());
 app.use(cors());
