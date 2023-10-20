@@ -12,7 +12,8 @@ app.use(cors());
 
 app.post('/createNotionPage', async (req, res) => {
   try {
-    const { product, asin, StockPriceValue, feedback } = req.body;
+    // console.log(req.body)
+    const { product, asin,StockPriceValue, feedback } = req.body;
     const databaseId = 'c7018c38f98144c0b890da2801fdf7f1'; // NotionデータベースのIDに変更
     console.log(product)
     const response = await axios.post(
@@ -40,7 +41,7 @@ app.post('/createNotionPage', async (req, res) => {
               },
             ],
           },
-          仕入れ値: {
+          仕入れ金額: {
             rich_text: [
               {
                 text: {
