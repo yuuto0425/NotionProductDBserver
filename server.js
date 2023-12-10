@@ -12,9 +12,14 @@ app.use(cors());
 
 app.post('/createNotionPage', async (req, res) => {
   try {
-    // console.log(req.body)
-    const { product, asin,StockPriceValue, feedback } = req.body;
+    console.log(req.body)
+    const { product, asin,StockPriceValue, feedback ,selectedPurpose } = req.body;
     const databaseId = 'c7018c38f98144c0b890da2801fdf7f1'; // NotionデータベースのIDに変更
+    const multiSelectArray = selectedPurpose.map((item) => ({
+      // id: item.id || null, // Replace with actual id if available
+      name: item,
+    }));
+    
     console.log(product)
     const response = await axios.post(
       `https://api.notion.com/v1/pages`,
@@ -58,6 +63,9 @@ app.post('/createNotionPage', async (req, res) => {
                 },
               },
             ],
+          },
+          目的別: {
+            multi_select: multiSelectArray
           },
         },
       },
