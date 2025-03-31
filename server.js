@@ -19,6 +19,7 @@ app.post('/createNotionPage', async (req, res) => {
       // id: item.id || null, // Replace with actual id if available
       name: item,
     }));
+    const today = new Date().toISOString().split("T")[0]; // YYYY-MM-DD の形式に変換
     
     console.log(product)
     const response = await axios.post(
